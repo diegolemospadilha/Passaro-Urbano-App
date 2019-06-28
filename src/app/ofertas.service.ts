@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Oferta } from './shared/oferta.model';
 
 import { HttpClient } from '@angular/common/http'
+import { URL_API_OFERTAS, URL_API_COMO_USAR, URL_API_ONDE_FICA } from './app.api';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,29 @@ export class OfertasService {
   constructor(private http: HttpClient) { }
 
   public getOfertas(): Promise<Oferta[]> {
-     return this.http.get('http://localhost:3000/ofertas?destaque=true').toPromise()
+     return this.http.get(`${URL_API_OFERTAS}?destaque=true`).toPromise()
               .then( (resposta: any) => resposta)
   }
 
   public getOfertasPorCategoria(categoria: string): Promise<Oferta[]>{
-    return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`).toPromise()
+    return this.http.get(`${URL_API_OFERTAS}?categoria=${categoria}`).toPromise()
               .then( (resposta: any) => resposta )
+  }
+
+  public getOfertaPorId( id: number): Promise<Oferta>{
+    return this.http.get(`${URL_API_OFERTAS}?id=${id}`).toPromise()
+            .then( (resposta : any) => resposta.shift(0) )
+  }
+
+  /**
+   * Método que busca as informações no banco de dados referentes a como usar e onde fica de cada oferta.
+   * @param id = id da oferta
+   */
+  public getMaisInformacoesOfertaPorId(id: number, tipoInformacao: string): Promise<string>{
+    let busca : String
+    tipoInformacao === 'como-usar' ? busca = URL_API_COMO_USAR : busca = URL_API_ONDE_FICA
+    return this.http.get(`${busca}?id=${id}`).toPromise()
+    .then( (resposta : any) => resposta.shift(0).descricao )
   }
 
 
