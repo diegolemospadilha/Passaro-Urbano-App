@@ -18,11 +18,16 @@ export class OfertaComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, private ofertaService : OfertasService ) { }
 
   ngOnInit() {
-    console.log('Id da oferta: ', this.route.snapshot.params['id']) // Recuperando id da oferta usando snapshot
-    this.ofertaService.getOfertaPorId(this.route.snapshot.params['id'])
-     .then( (oferta: Oferta) => {
+    this.route.params.subscribe(
+      (parametros : any) => {
+        //console.log('Id da oferta: ', this.route.snapshot.params['id']) // Recuperando id da oferta usando snapshot
+        this.ofertaService.getOfertaPorId(parametros.id)
+        .then( (oferta: Oferta) => {
         this.oferta = oferta; console.log(this.oferta)
       }) 
+      }
+    )
+    
   }
 
   ngOnDestroy(){

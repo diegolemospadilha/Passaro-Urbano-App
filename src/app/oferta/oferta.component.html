@@ -11,7 +11,7 @@
     -->
     <div class="row">
       <div class="col">
-        <h4 class="mb-3">{{ oferta.descricao_oferta }}</h4>
+        <h4 class="mb-3">{{ oferta.titulo }} - {{ oferta.descricao_oferta }}</h4>
       </div>
     </div>
 
@@ -30,13 +30,12 @@
         <div class="row">
           <div class="col text-center">
             <p>Por apenas</p>
-          </div>
-          
+          </div> 
         </div>
 
         <div class="row">
           <div class="col text-center">
-            <h4>{{ oferta.titulo }} - {{ oferta.descricao_oferta }}</h4>
+            <h1>{{ oferta.valor | currency: 'BRL': symbol }}</h1>
           </div>
         </div>
 
