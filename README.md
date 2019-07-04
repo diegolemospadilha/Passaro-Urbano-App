@@ -1,5 +1,7 @@
+This app was developed based on the following [course](https://www.udemy.com/curso-de-desenvolvimento-web-com-es6-typescript-e-angular-4/)
 # PassaroUrbanoApp
 
+This app is available [here](https://app-passaro-urbano.herokuapp.com/)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
 
 ## Development server
