@@ -12,8 +12,6 @@ export class OrdemCompraService {
 
     constructor(private http: HttpClient){}
     public efetivarCompra(pedido: Pedido): Observable<any>{
-        //console.log(pedido)
-
         return this.http.post(`${URL_API_PEDIDOS}`, pedido).pipe(
             map( (resposta: any) => resposta)) 
     }

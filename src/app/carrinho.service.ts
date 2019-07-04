@@ -19,9 +19,33 @@ export class CarrinhoService {
     let itemEncontradoNoCarrinho = this.itensCarrinho.find( (item: ItemCarrinho) => item.id === itemCarrinho.id)
     if(itemEncontradoNoCarrinho){
       itemEncontradoNoCarrinho.quantidade += 1
+      itemEncontradoNoCarrinho.valor += itemCarrinho.valor
     } else {
       this.itensCarrinho.push(itemCarrinho)
+    } 
+  }
+
+  public calcularValorTotalCompras(): number {
+    let total: number = 0
+    this.itensCarrinho.map( (item: ItemCarrinho) => total+= item.valor * item.quantidade)
+    return total
+  }
+
+  public alterarQtdeDoItem(item: ItemCarrinho, operador: string): void {
+    if(operador === '+'){
+      item.quantidade += 1
+    } else if (operador === '-'){
+      item.quantidade -= 1
+      if(item.quantidade === 0){
+        let index = this.itensCarrinho.indexOf(item)
+        if(index !== -1){
+          this.itensCarrinho.splice(index, 1)
+        }
+      }
     }
-    
+  } 
+
+  public limparCarrinho(): void {
+    this.itensCarrinho = []
   }
 }

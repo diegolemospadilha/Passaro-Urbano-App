@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms'
+import {NgxMaskModule, IConfig} from 'ngx-mask'
 // Import customer pipe
 import { DescricaoReduzida } from './common-pipes/descricao-reduzida.pipe';
 
@@ -27,6 +28,9 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
 /** Import services */
 import { CarrinhoService } from './carrinho.service';
 
+/** Import consts */
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +51,7 @@ import { CarrinhoService } from './carrinho.service';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(options),
     RouterModule.forRoot(ROUTES)
   ],
   providers: [ CarrinhoService, {provide: LOCALE_ID, useValue: 'pt'}],
