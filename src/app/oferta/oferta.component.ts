@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
 import { interval, Observable, Observer } from 'rxjs';
+import { CarrinhoService } from '../carrinho.service';
+import { ItemCarrinho } from '../shared/item-carrinho.model';
 
 @Component({
   selector: 'app-oferta',
@@ -14,8 +16,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
 
   public oferta: Oferta
  
-
-  constructor(private route: ActivatedRoute, private ofertaService : OfertasService ) { }
+  constructor(private route: ActivatedRoute, private ofertaService : OfertasService, private carrinhoService: CarrinhoService ) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -38,7 +39,16 @@ export class OfertaComponent implements OnInit, OnDestroy {
     //       (error: any) => console.log(error),
     //       () => console.log('Processamento foi classificado como concluido')
     //   )}
-
+  
+    public addItemAoCarrinho(){
+      let itemCarrinho: ItemCarrinho = new ItemCarrinho(
+        this.oferta.id,
+        this.oferta.imagens[0],
+        this.oferta.titulo,
+        this.oferta.descricao_oferta, 1, this.oferta.valor)
+      console.log(itemCarrinho)
+      this.carrinhoService.addItemAoCarrinho(itemCarrinho)
+    }
     
 
 }

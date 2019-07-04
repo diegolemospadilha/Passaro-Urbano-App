@@ -188,7 +188,7 @@
   "pedidos": [
     {
       "id": 1,
-      "endereco": "Rua Nova",
+      "endereco": "Rua Palmas",
       "numero": "15",
       "complemento": "Casa 2",
       "formaPagamento": "dinheiro"
