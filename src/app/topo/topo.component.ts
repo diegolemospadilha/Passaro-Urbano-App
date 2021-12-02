@@ -1,5 +1,6 @@
+import { CarrinhoService } from './../carrinho.service';
 import { Oferta } from './../shared/oferta.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { OfertasService } from '../ofertas.service';
 import { Observable, Subject, of } from 'rxjs';
 import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
@@ -10,15 +11,25 @@ import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/
   styleUrls: ['./topo.component.css'],
   providers: [ OfertasService ]
 })
-export class TopoComponent implements OnInit {
+export class TopoComponent implements OnInit,OnChanges{
 
   public ofertas: Observable<Oferta[]>
   public subjectPesquisa: Subject<string> = new Subject<string>()
   
-  constructor(private ofertasService: OfertasService) { }
+  constructor(private ofertasService: OfertasService,private carrinho : CarrinhoService) { }
+  
+  contador = 0
+  
+  ngOnChanges(changes: SimpleChanges): void {
+
+   }
 
   ngOnInit() {
-    this.ofertas = this.subjectPesquisa.pipe(
+        
+    CarrinhoService.emitContator.subscribe((i)=>{
+      this.contador = i
+    })
+     this.ofertas = this.subjectPesquisa.pipe(
       debounceTime(1000), // Realiza a requisição a API após 1 segundo
       distinctUntilChanged(), // Se a pesquisa atual for igual a anterior a requisição a API NÃO é executada
       switchMap((termo: string) => {
@@ -34,6 +45,9 @@ export class TopoComponent implements OnInit {
       })
       
     )
+
+    
+ 
     
     // Aqui obtem o retorno do subject que realiza a requisição a API
     //this.ofertas.subscribe( (ofertas : Oferta[]) => this.ofertas2 = ofertas )

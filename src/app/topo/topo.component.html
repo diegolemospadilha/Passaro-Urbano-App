@@ -19,7 +19,12 @@
         </ul>
       </div>
       <div class="col-md-2">
-          <a [routerLink]="['/ordem-compra']"><img src="/assets/carrinho.png" /></a>
+          <a [routerLink]="['/ordem-compra']"><img src="/assets/carrinho.png" />
+
+          </a>
+         
+          <i> {{contador}}</i>
+
       </div>
     </div>
   </nav>
@@ -32,6 +37,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/diversao']" routerLinkActive="active">Diversão</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contato']" routerLinkActive="active">Contato</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/sobre-nos']" routerLinkActive="active">Sobre</a>
         </li>
       </ul>
     </div>

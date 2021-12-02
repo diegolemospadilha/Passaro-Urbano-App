@@ -22,3 +22,14 @@
 .active {
     color: #FFF 
 }
+
+i {
+width: 25px;
+height: 25px;
+text-align: center;
+border-radius: 50%;
+background-color: red;
+display: inline-block;
+color: white;
+position: absolute;
+}

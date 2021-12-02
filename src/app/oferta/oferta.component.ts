@@ -46,8 +46,7 @@ export class OfertaComponent implements OnInit, OnDestroy {
         this.oferta.imagens[0],
         this.oferta.titulo,
         this.oferta.descricao_oferta, 1, this.oferta.valor)
-      console.log(itemCarrinho)
-      this.carrinhoService.addItemAoCarrinho(itemCarrinho)
+       this.carrinhoService.addItemAoCarrinho(itemCarrinho)
     }
     
 

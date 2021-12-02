@@ -27,6 +27,8 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
 
 /** Import services */
 import { CarrinhoService } from './carrinho.service';
+import { ContatoComponent } from './contato/contato.component';
+import { SobreComponent } from './sobre/sobre.component';
 
 /** Import consts */
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
@@ -44,7 +46,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     OndeFicaComponent,
     DescricaoReduzida,
     OrdemCompraComponent,
-    OrdemCompraSucessoComponent
+    OrdemCompraSucessoComponent,
+    ContatoComponent,
+    SobreComponent
   ],
   imports: [
     BrowserModule,
