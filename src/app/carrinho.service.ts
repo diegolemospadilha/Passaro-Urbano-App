@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 import { ItemCarrinho } from './shared/item-carrinho.model';
 
 @Injectable({
@@ -7,7 +8,11 @@ import { ItemCarrinho } from './shared/item-carrinho.model';
 export class CarrinhoService {
   
   public itensCarrinho: ItemCarrinho[] = []
-  
+
+  public quantidadeItens = 0
+ 
+  static emitContator = new EventEmitter<number>()
+
   constructor() { }
   
   public exibirItensDoCarrinho(): ItemCarrinho[] {
@@ -23,7 +28,11 @@ export class CarrinhoService {
     } else {
       this.itensCarrinho.push(itemCarrinho)
     } 
-  }
+
+    this.quantidadeItens += 1
+     
+     CarrinhoService.emitContator.emit(this.quantidadeItens)
+    }
 
   public calcularValorTotalCompras(): number {
     let total: number = 0
@@ -44,6 +53,7 @@ export class CarrinhoService {
       }
     }
   } 
+
 
   public limparCarrinho(): void {
     this.itensCarrinho = []

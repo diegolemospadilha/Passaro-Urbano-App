@@ -1,0 +1,43 @@
+<div class="container">
+  <form class="content" novalidate [formGroup]="formulario" (ngSubmit)="enviar()">
+    <span class="sucess" *ngIf="enviado">
+      <div class="alert alert-primary" role="alert">
+        Recebemos sua menssagem, responderemos em breve!
+      </div>   
+     </span>
+    <div class="form-row">
+      
+      <div class="form-group col-md">
+        
+
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Nome" 
+          autocomplete="off" 
+          formControlName="nome"
+          required
+        >
+       
+        <input 
+            type="email" 
+            class="form-control " 
+            placeholder="Email" 
+            autocomplete="off" 
+            formControlName="email"
+            required
+          >
+       
+
+             <textarea required class="form-control" formControlName="menssagem" placeholder="Menssagem" id="exampleFormControlTextarea1" rows="3"></textarea>
+ 
+        <button 
+        type="submit" 
+        class="btn btn-primary btn-lg"
+        [disabled]="!formulario.valid"
+      >Enviar</button>
+      </div>
+      
+     </div>
+    </form>
+</div>
