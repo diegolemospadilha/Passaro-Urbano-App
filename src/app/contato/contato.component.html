@@ -1,8 +1,14 @@
+<div class="secao">
+  <h3 class="text-center">Vamos conversar?</h3>
+  <h5 class="text-center">Utilize este canal de atendimento para esclarecer dúvidas ou ainda nos enviar sugestões de melhoria</h5>
+</div>
+
 <div class="container">
+
   <form class="content" novalidate [formGroup]="formulario" (ngSubmit)="enviar()">
-    <span class="sucess" *ngIf="enviado">
+    <span class="success" *ngIf="enviado">
       <div class="alert alert-primary" role="alert">
-        Recebemos sua menssagem, responderemos em breve!
+        Recebemos sua mensagem, responderemos em breve!
       </div>   
      </span>
     <div class="form-row">
@@ -29,7 +35,7 @@
           >
        
 
-             <textarea required class="form-control" formControlName="menssagem" placeholder="Menssagem" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea required class="form-control" formControlName="mensagem" placeholder="Mensagem" id="exampleFormControlTextarea1" rows="3"></textarea>
  
         <button 
         type="submit" 

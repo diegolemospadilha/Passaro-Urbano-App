@@ -1,28 +1,28 @@
 .container {
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .content {
-    width: 80vw;
-    margin-bottom: 20px;
-    text-align: center;
-
+  width: 80vw;
+  margin-bottom: 20px;
+  text-align: center;
 }
-.sobre-nos{
-    margin-top: 50px;
+.sobre-nos {
+  margin-top: 50px;
 }
 
+p {
+  margin-top: 30px;
+}
+.tutorial {
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
 
-.tutorial{
-    margin-top: 30px;
-    margin-bottom: 100px;
-
- }
-
- .video {
-     margin: 10px
- }
+.video {
+  margin: 10px;
+}
